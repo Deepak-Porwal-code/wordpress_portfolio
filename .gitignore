@@ -1,0 +1,11 @@
+# deps + build output never pushed
+node_modules/
+.output/
+.wrangler/
+dist/
+# lead lists stay private (your business asset, not public code)
+lead-engine/*.csv
+lead-engine/*.xlsx
+# OS junk
+Thumbs.db
+.DS_Store
