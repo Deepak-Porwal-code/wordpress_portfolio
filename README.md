@@ -1,4 +1,4 @@
-# wordpress_portfolio
+# wordpress_portfolio [![Deploy to GitHub Pages](https://github.com/Deepak-Porwal-code/wordpress_portfolio/actions/workflows/pages.yml/badge.svg)](https://deepak-porwal-code.github.io/wordpress_portfolio/)
 
 WordPress developer portfolio for Deepak Porwal — 4 live .ae sites, fixed pricing, 7-day delivery.
 
