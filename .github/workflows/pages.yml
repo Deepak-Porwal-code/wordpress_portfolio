@@ -16,11 +16,21 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    env:
+      PAGES_BASE: ./
+      NITRO_PRESET: node-server
     steps:
       - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+        working-directory: project-prospect-boost-main
+      - run: bun run build
+        working-directory: project-prospect-boost-main
+      - run: node .github/scripts/export-static.mjs
+        working-directory: project-prospect-boost-main
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: pages-dist
       - id: deployment
         uses: actions/deploy-pages@v4

@@ -7,6 +7,11 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // ponytail: relative base only for the GitHub Pages static export (PAGES_BASE=./ in CI).
+  // Local dev stays absolute so localhost:5173 keeps working unchanged.
+  vite: {
+    base: process.env.PAGES_BASE ?? "/",
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this

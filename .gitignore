@@ -1,6 +1,7 @@
 # deps + build output never pushed
 node_modules/
 .output/
+pages-dist/
 .wrangler/
 dist/
 # lead lists stay private (your business asset, not public code)
