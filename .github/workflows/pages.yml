@@ -27,7 +27,6 @@ jobs:
       - run: bun run build
         working-directory: project-prospect-boost-main
       - run: node .github/scripts/export-static.mjs
-        working-directory: project-prospect-boost-main
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

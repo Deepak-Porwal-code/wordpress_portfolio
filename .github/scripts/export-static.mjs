@@ -1,19 +1,24 @@
 // Export the prerendered React app as plain static files for GitHub Pages.
-// Usage (CI): build first (PAGES_BASE=./ NITRO_PRESET=node-server),
-// then: node .github/scripts/export-static.mjs
-// Serves .output locally, captures /, rewrites root-absolute URLs to relative.
+// CWD-independent: all paths derive from this file's location.
+// Usage: build first (PAGES_BASE=./ NITRO_PRESET=node-server), then:
+//   node .github/scripts/export-static.mjs   (from repo root, or anywhere)
 import { spawn } from "node:child_process";
-import { cpSync, mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
+import { cpSync, mkdirSync, writeFileSync, existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
 
+const ROOT = path.resolve(fileURLToPath(new URL("../..", import.meta.url)));
+const PROJ = path.join(ROOT, "project-prospect-boost-main");
+const OUT = path.join(ROOT, "pages-dist");
 const HOST = "127.0.0.1";
 const PORT = 4311;
-const OUT = new URL("../../pages-dist/", import.meta.url);
 
-if (!existsSync(".output/server/index.mjs")) {
+if (!existsSync(path.join(PROJ, ".output/server/index.mjs"))) {
   console.error("missing .output/server/index.mjs — build first");
   process.exit(1);
 }
 const server = spawn("node", [".output/server/index.mjs"], {
+  cwd: PROJ,
   env: { ...process.env, HOST, NITRO_HOST: HOST, PORT: String(PORT), NITRO_PORT: String(PORT) },
   stdio: ["ignore", "pipe", "pipe"],
 });
@@ -40,9 +45,9 @@ html = html
   .replaceAll('content="/', 'content="./');
 
 mkdirSync(OUT, { recursive: true });
-cpSync(".output/public", OUT, { recursive: true });
-writeFileSync(new URL("index.html", OUT), html);
-if (!existsSync(new URL("404.html", OUT))) {
-  writeFileSync(new URL("404.html", OUT), html);
+cpSync(path.join(PROJ, ".output/public"), OUT, { recursive: true });
+writeFileSync(path.join(OUT, "index.html"), html);
+if (!existsSync(path.join(OUT, "404.html"))) {
+  writeFileSync(path.join(OUT, "404.html"), html);
 }
-console.log("static export ok:", html.length, "bytes ->", new URL(".", OUT).pathname);
+console.log("static export ok:", html.length, "bytes ->", OUT);
