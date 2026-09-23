@@ -20,12 +20,14 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "../components/ui/button";
-// ponytail: local public/ images, not Lovable CDN (CDN urls 404 outside Lovable hosting)
-const portraitAsset = { url: "/images/deepak-porwal.jpg" };
-const advoPreview = { url: "/images/advo-preview.jpg" };
-const tieronePreview = { url: "/images/tierone-preview.jpg" };
-const dsusPreview = { url: "/images/dsus-preview.jpg" };
-const humdPreview = { url: "/images/humd-preview.jpg" };
+// ponytail: local public/ images, not Lovable CDN (CDN urls 404 outside Lovable hosting).
+// IMG prefixes the deploy subpath (/wordpress_portfolio on Pages, "" in dev).
+const IMG = import.meta.env.BASE_URL.replace(/\/$/, "");
+const portraitAsset = { url: `${IMG}/images/deepak-porwal.jpg` };
+const advoPreview = { url: `${IMG}/images/advo-preview.jpg` };
+const dsusPreview = { url: `${IMG}/images/dsus-preview.jpg` };
+const tieronePreview = { url: `${IMG}/images/tierone-preview.jpg` };
+const humdPreview = { url: `${IMG}/images/humd-preview.jpg` };
 
 const emailHref =
   "mailto:porwal99deepak@gmail.com?subject=Freelance%20project%20enquiry&body=Hi%20Deepak%2C%0A%0AI%27d%20like%20to%20discuss%20a%20project.%0A%0AProject%20type%3A%0ATimeline%3A%0ABudget%20range%3A%0A%0AThank%20you.";
