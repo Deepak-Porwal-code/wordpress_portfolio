@@ -38,12 +38,9 @@ for (let i = 0; i < 45; i++) {
 server.kill();
 if (!html) { console.error("capture failed: no HTML. server said:\n" + logged.slice(-2000)); process.exit(1); }
 
-// ponytail: relative-ize so it works under /wordpress_portfolio/ (or any path)
-html = html
-  .replaceAll('href="/', 'href="./')
-  .replaceAll('src="/', 'src="./')
-  .replaceAll('content="/', 'content="./')
-  .replaceAll('"././', '"./');
+// ponytail: build already emits correct /wordpress_portfolio/* URLs (PAGES_BASE),
+// so no rewriting — only collapse any accidental double-relative prefix.
+html = html.replaceAll('"././', '"./');
 
 mkdirSync(OUT, { recursive: true });
 cpSync(path.join(PROJ, ".output/public"), OUT, { recursive: true });

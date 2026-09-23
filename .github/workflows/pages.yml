@@ -17,7 +17,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     env:
-      PAGES_BASE: ./
+      PAGES_BASE: /wordpress_portfolio/
       NITRO_PRESET: node-server
     steps:
       - uses: actions/checkout@v4

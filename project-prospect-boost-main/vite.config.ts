@@ -7,8 +7,8 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  // ponytail: relative base only for the GitHub Pages static export (PAGES_BASE=./ in CI).
-  // Local dev stays absolute so localhost:5173 keeps working unchanged.
+  // ponytail: absolute subpath base for the GitHub Pages export
+  // (PAGES_BASE=/wordpress_portfolio/ in CI). Local dev stays at /.
   vite: {
     base: process.env.PAGES_BASE ?? "/",
   },
