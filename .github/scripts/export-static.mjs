@@ -42,7 +42,8 @@ if (!html) { console.error("capture failed: no HTML. server said:\n" + logged.sl
 html = html
   .replaceAll('href="/', 'href="./')
   .replaceAll('src="/', 'src="./')
-  .replaceAll('content="/', 'content="./');
+  .replaceAll('content="/', 'content="./')
+  .replaceAll('"././', '"./');
 
 mkdirSync(OUT, { recursive: true });
 cpSync(path.join(PROJ, ".output/public"), OUT, { recursive: true });
