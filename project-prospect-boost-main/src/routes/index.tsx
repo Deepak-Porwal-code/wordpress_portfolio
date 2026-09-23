@@ -5,21 +5,26 @@ import {
   CheckCircle2,
   Code2,
   ExternalLink,
-  Gauge,
+  Globe,
+  Layers,
   Linkedin,
   Mail,
   MapPin,
   Menu,
   MessageCircle,
+  Paintbrush,
   Phone,
   RefreshCw,
   Search,
+  ShieldCheck,
   ShoppingBag,
   Wrench,
   X,
+  Zap,
 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "../components/ui/button";
+
 // ponytail: local public/ images, not Lovable CDN (CDN urls 404 outside Lovable hosting).
 // IMG prefixes the deploy subpath (/wordpress_portfolio on Pages, "" in dev).
 const IMG = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -30,9 +35,13 @@ const tieronePreview = { url: `${IMG}/images/tierone-preview.jpg` };
 const humdPreview = { url: `${IMG}/images/humd-preview.jpg` };
 
 const emailHref =
-  "mailto:porwal99deepak@gmail.com?subject=Freelance%20project%20enquiry&body=Hi%20Deepak%2C%0A%0AI%27d%20like%20to%20discuss%20a%20project.%0A%0AProject%20type%3A%0ATimeline%3A%0ABudget%20range%3A%0A%0AThank%20you.";
-const whatsappHref =
-  "https://wa.me/917374953088?text=Hi%20Deepak%2C%20I%27d%20like%20to%20discuss%20a%20website%20project.";
+  "mailto:porwal99deepak@gmail.com?subject=Website%20project%20enquiry&body=Hi%20Deepak%2C%0A%0AI%27d%20like%20to%20discuss%20a%20website%20project.%0A%0AMy%20business%3A%0AWhat%20I%20need%3A%0A%0AThank%20you.";
+const discussHref =
+  "https://wa.me/917374953088?text=Hi%20Deepak%2C%20I%20found%20your%20WordPress%20portfolio%20and%20would%20like%20to%20discuss%20a%20website%20project.";
+const quoteHref =
+  "https://wa.me/917374953088?text=Hi%20Deepak%2C%20I%20found%20your%20WordPress%20portfolio%20and%20would%20like%20a%20quote%20for%20a%20website%20project.%20My%20business%3A%20";
+const reviewHref =
+  "https://wa.me/917374953088?text=Hi%20Deepak%2C%20I%20found%20your%20WordPress%20portfolio.%20Could%20you%20review%20my%20website%20and%20point%20out%20practical%20improvements%3F%20My%20site%3A%20";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -42,13 +51,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Hire Deepak Porwal for professional WordPress websites, WooCommerce stores, redesigns, speed improvements, and ongoing website support.",
+          "Freelance WordPress developer in India. Business websites, redesigns, WooCommerce stores, speed and maintenance for clinics, consultants, stores and more.",
       },
       { property: "og:title", content: "Deepak Porwal — Freelance WordPress Developer" },
       {
         property: "og:description",
         content:
-          "Professional WordPress websites, online stores, redesigns, speed improvements, and reliable ongoing support.",
+          "WordPress websites for businesses: build, redesign, WooCommerce, speed and maintenance. Real work, clear process, easy contact.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -58,41 +67,83 @@ export const Route = createFileRoute("/")({
 
 const services = [
   {
-    icon: Code2,
+    icon: Globe,
     number: "01",
-    title: "Business websites",
-    copy: "A professional, responsive WordPress presence that explains your offer clearly and makes it easy for customers to contact you.",
-    points: ["Custom page builds", "Mobile-ready layouts", "Forms and integrations"],
+    title: "WordPress website development",
+    copy: "Professional responsive business websites built around your company's goals and content.",
+    points: ["Business pages", "Mobile-ready layouts", "Contact and enquiry flow"],
+  },
+  {
+    icon: Paintbrush,
+    number: "02",
+    title: "WordPress website redesign",
+    copy: "Modernize an outdated website with better structure, design, mobile experience and navigation.",
+    points: ["Design refresh", "Structure cleanup", "Usability improvements"],
+  },
+  {
+    icon: Layers,
+    number: "03",
+    title: "Elementor development",
+    copy: "Build and customize responsive pages using Elementor, kept editable for your team.",
+    points: ["Custom page builds", "Template setup", "Content you can edit"],
   },
   {
     icon: ShoppingBag,
-    number: "02",
-    title: "WooCommerce stores",
-    copy: "Easy-to-manage online stores with clear product journeys, dependable checkout setup, and room to grow.",
-    points: ["Store setup", "Product and category pages", "Payments and shipping"],
+    number: "04",
+    title: "WooCommerce development",
+    copy: "Build and improve WordPress e-commerce websites and product experiences.",
+    points: ["Store setup", "Product pages", "Payments and shipping"],
+  },
+  {
+    icon: Zap,
+    number: "05",
+    title: "Website speed optimization",
+    copy: "Identify and improve common performance issues such as heavy images, extra scripts and slow page structures.",
+    points: ["Speed review", "Image optimization", "Loading improvements"],
+  },
+  {
+    icon: ShieldCheck,
+    number: "06",
+    title: "WordPress maintenance",
+    copy: "Updates, content changes, troubleshooting, backups, security checks and ongoing improvements.",
+    points: ["Updates and backups", "Content changes", "Fixes and checks"],
   },
   {
     icon: RefreshCw,
-    number: "03",
-    title: "Redesigns & migrations",
-    copy: "Refresh an outdated website, improve its structure, or move it carefully without losing the content your business depends on.",
-    points: ["Visual redesign", "Content migration", "WordPress to MERN"],
+    number: "07",
+    title: "Website migration",
+    copy: "WordPress migrations, restructuring and website transitions where technically appropriate.",
+    points: ["Careful migration", "Content preservation", "Structure improvements"],
   },
-  {
-    icon: Gauge,
-    number: "04",
-    title: "Speed & support",
-    copy: "Practical performance improvements and ongoing help to keep your website secure, current, and working as expected.",
-    points: ["Speed optimization", "Security and backups", "Ongoing maintenance"],
-  },
+];
+
+const problems = [
+  "Outdated website design",
+  "Poor mobile experience",
+  "Slow-loading pages",
+  "Difficult navigation",
+  "Weak calls-to-action",
+  "Poor service presentation",
+  "Missing WhatsApp/contact opportunities",
+  "Outdated content",
+  "Poor page structure",
+  "Weak conversion flow",
+  "Broken or outdated elements",
+  "Poor visual consistency",
+  "Basic SEO issues",
+  "Poor image optimization",
+  "Security and maintenance gaps",
 ];
 
 const projects = [
   {
     name: "ADVO.AE",
-    type: "Printing agency · WordPress",
-    description:
-      "A clear, trust-led website for a Dubai printing agency, with structured services and direct enquiry paths.",
+    type: "Business website",
+    platform: "WordPress",
+    role: "WordPress Developer · Professional project at Wezo",
+    contribution:
+      "Built the printing agency website from designs: services, digital marketing and creative design pages with a quote enquiry flow, contact strip and mobile-first SEO basics.",
+    focus: ["Responsive design", "Business pages", "Contact and enquiry flow", "Content structure"],
     href: "https://advo.ae",
     image: advoPreview.url,
     imageAlt: "ADVO printing agency homepage preview",
@@ -102,9 +153,12 @@ const projects = [
   },
   {
     name: "DSUSVIP.AE",
-    type: "Auto care · WordPress",
-    description:
-      "A full auto-care experience for Al Quoz Dubai — services, gallery, blog and appointment flow with tap-to-call header.",
+    type: "Business website",
+    platform: "WordPress",
+    role: "WordPress Developer · Professional project at Wezo",
+    contribution:
+      "Built the Al Quoz auto-care website: services and branch pages with booking enquiry, click-to-call and WhatsApp paths, reviews and location pages, plus image and cache optimization.",
+    focus: ["Booking enquiry flow", "Mobile experience", "Local presence", "Speed basics"],
     href: "https://dsusvip.ae",
     image: dsusPreview.url,
     imageAlt: "DSUS VIP auto care homepage preview",
@@ -114,9 +168,12 @@ const projects = [
   },
   {
     name: "TIERONE.AE",
-    type: "HPC & AI infrastructure · WordPress",
-    description:
-      "A polished corporate presence that organizes specialist infrastructure services into a clear, approachable experience.",
+    type: "Business website",
+    platform: "WordPress (custom theme)",
+    role: "WordPress Developer · Professional project at Wezo",
+    contribution:
+      "Built the B2B IT website: solutions and partner pages with a quote enquiry flow and lead forms routed to email and WhatsApp.",
+    focus: ["B2B page structure", "Lead capture", "Content organization", "Maintainable build"],
     href: "https://tierone.ae",
     image: tieronePreview.url,
     imageAlt: "TierOne website homepage preview",
@@ -126,9 +183,12 @@ const projects = [
   },
   {
     name: "HUMD.AE",
-    type: "Corporate gifts · WordPress → MERN",
-    description:
-      "Commerce experience spanning WordPress delivery, product development, and AI-supported catalog, pricing, and stock workflows.",
+    type: "E-commerce website",
+    platform: "WooCommerce → MERN rebuild",
+    role: "WordPress Developer → Junior Software Developer at Humd.ae",
+    contribution:
+      "Maintained the WooCommerce store, then rebuilt it with the product team in React/Node/Express for scale, including automation for catalog uploads, pricing and stock.",
+    focus: ["Catalog at scale", "Pricing workflows", "Stock management", "Team delivery"],
     href: "https://humd.ae",
     image: humdPreview.url,
     imageAlt: "HUMD store homepage preview",
@@ -143,7 +203,7 @@ const experience = [
     period: "APR 2026 — NOW",
     role: "Junior Software Developer",
     company: "Humd.ae",
-    copy: "Delivering WordPress, React, Node.js, and AI-supported e-commerce work across catalog uploads, pricing, and stock workflows.",
+    copy: "WordPress and MERN e-commerce work: store maintenance, rebuild delivery, and automation for catalog, pricing and stock.",
   },
   {
     period: "NOV 2025 — MAR 2026",
@@ -155,41 +215,72 @@ const experience = [
     period: "SEP — NOV 2025",
     role: "Software Developer Intern",
     company: "Swastya.ai",
-    copy: "Built an AI WhatsApp assistant handling 1,000+ monthly patient interactions through LangChain, Twilio, and WATI.",
+    copy: "Built an AI WhatsApp assistant handling 1,000+ monthly patient interactions with LangChain, Twilio and WATI.",
   },
   {
     period: "JUL — NOV 2024",
     role: "Frontend Developer Intern",
     company: "Balansha",
-    copy: "Translated Figma into a responsive e-commerce frontend and integrated APIs across Node.js and Spring Boot services.",
+    copy: "Converted Figma designs into a responsive e-commerce frontend with Node.js and Spring Boot API integrations.",
+  },
+];
+
+const processSteps = [
+  {
+    step: "01",
+    title: "Discover",
+    copy: "Understand your business, audience, goals, services and website requirements.",
+  },
+  {
+    step: "02",
+    title: "Plan",
+    copy: "Define the sitemap, page structure, content needs, features and priorities.",
+  },
+  { step: "03", title: "Build", copy: "Develop the WordPress website with responsive layouts." },
+  {
+    step: "04",
+    title: "Review",
+    copy: "Review content, mobile experience, navigation and functionality together.",
+  },
+  {
+    step: "05",
+    title: "Launch",
+    copy: "Complete final checks and launch, then hand the website over to you.",
+  },
+  {
+    step: "06",
+    title: "Support",
+    copy: "Agreed post-launch support and maintenance, depending on project scope.",
   },
 ];
 
 const faq = [
   {
-    question: "What types of projects can I contact you about?",
+    question: "Do you build websites from scratch?",
     answer:
-      "New WordPress business websites, WooCommerce stores, website redesigns, performance improvements, migrations, maintenance, and selected full-stack development work.",
+      "Yes. Depending on the project requirements, I can build WordPress business websites from the ground up.",
   },
   {
-    question: "Can we work together if I am outside Bengaluru or India?",
+    question: "Can you redesign my existing WordPress website?",
     answer:
-      "Yes. I can work remotely and keep the project moving through agreed calls, written updates, and clear review stages.",
+      "Yes. I can review your existing website and propose improvements based on design, mobile experience, structure, performance and business requirements.",
   },
   {
-    question: "How will communication work during the project?",
-    answer:
-      "We begin by clarifying your goals, pages, content, and timeline. During the build, I share progress at agreed stages and collect feedback before launch.",
+    question: "Do you work with Elementor?",
+    answer: "Yes, Elementor is part of my WordPress development toolkit.",
   },
   {
-    question: "Will I be able to manage my WordPress website?",
-    answer:
-      "Yes. The site is built to remain practical to manage, and the handover can cover the everyday updates relevant to your website.",
+    question: "Can you build an online store?",
+    answer: "Yes, I can work with WooCommerce for WordPress-based e-commerce websites.",
   },
   {
-    question: "Can you support the website after launch?",
+    question: "Can you improve website speed?",
     answer:
-      "Yes. Ongoing maintenance, updates, speed checks, security, backups, and future improvements can be discussed based on what your website needs.",
+      "I can analyze common performance issues and implement appropriate optimizations based on the website's technical setup.",
+  },
+  {
+    question: "Do you provide maintenance?",
+    answer: "Maintenance can be provided depending on the agreed scope and requirements.",
   },
 ];
 
@@ -228,11 +319,11 @@ function Index() {
             ))}
             <a
               className="inline-flex items-center gap-2 bg-primary px-5 py-3 text-primary-foreground transition-transform hover:-translate-y-0.5"
-              href={whatsappHref}
+              href={quoteHref}
               target="_blank"
               rel="noreferrer"
             >
-              Discuss a project <MessageCircle className="size-4" />
+              Get a Website Quote <MessageCircle className="size-4" />
             </a>
           </nav>
           <Button
@@ -263,11 +354,11 @@ function Index() {
             ))}
             <a
               className="mt-5 inline-flex items-center justify-center gap-2 bg-primary px-5 py-3 text-primary-foreground"
-              href={whatsappHref}
+              href={quoteHref}
               target="_blank"
               rel="noreferrer"
             >
-              Discuss a project <MessageCircle className="size-4" />
+              Get a Website Quote <MessageCircle className="size-4" />
             </a>
           </nav>
         )}
@@ -278,50 +369,51 @@ function Index() {
         <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:py-20 lg:grid-cols-[1.15fr_.85fr] lg:px-10 lg:py-24">
           <div className="flex flex-col justify-center">
             <div className="mb-8 flex flex-wrap items-center gap-3 text-xs font-bold uppercase text-muted-foreground">
-              <span className="size-2 animate-pulse rounded-full bg-highlight" /> Available for
-              freelance projects <span className="text-border">/</span>
+              <span className="size-2 animate-pulse rounded-full bg-highlight" />
+              Available for freelance projects
+              <span className="text-border">/</span>
               <span className="inline-flex items-center gap-1">
-                <MapPin className="size-3.5" /> Bengaluru · Working remotely
+                <MapPin className="size-3.5" /> Bengaluru · Working across India, remotely
               </span>
             </div>
             <p className="mb-4 font-mono text-sm font-bold uppercase text-accent">
-              Freelance WordPress & full stack developer
+              Freelance WordPress developer
             </p>
-            <h1 className="max-w-4xl font-display text-[clamp(3.25rem,7.5vw,7.25rem)] font-bold leading-[.88]">
-              A website built to <span className="text-accent">win trust.</span>
+            <h1 className="max-w-4xl font-display text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[.95]">
+              I build professional WordPress websites for businesses.
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              I build professional WordPress websites and online stores, improve slow or outdated
-              sites, and provide dependable support after launch.
+              I help businesses build, redesign, optimize and maintain WordPress websites — with
+              responsive design, performance, usability and clear customer journeys.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
-                href={whatsappHref}
+                href={quoteHref}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-3 bg-primary px-6 py-4 font-bold text-primary-foreground transition-transform hover:-translate-y-1"
               >
-                Discuss your project <MessageCircle className="size-5" />
+                Get a Website Quote <MessageCircle className="size-5" />
               </a>
               <a
-                href={emailHref}
+                href="#work"
                 className="inline-flex items-center justify-center gap-3 border border-foreground px-6 py-4 font-bold transition-colors hover:bg-foreground hover:text-background"
               >
-                Send an email <Mail className="size-5" />
+                View My Work
               </a>
             </div>
             <div className="mt-12 grid max-w-2xl grid-cols-3 border-y border-border py-5">
               <div>
                 <strong className="block font-display text-2xl sm:text-3xl">2+</strong>
-                <span className="text-xs text-muted-foreground">Years building</span>
+                <span className="text-xs text-muted-foreground">Years of experience</span>
               </div>
               <div className="border-x border-border px-3 sm:px-5">
                 <strong className="block font-display text-2xl sm:text-3xl">500+</strong>
-                <span className="text-xs text-muted-foreground">Product users</span>
+                <span className="text-xs text-muted-foreground">Product users supported</span>
               </div>
               <div className="pl-3 sm:pl-5">
                 <strong className="block font-display text-2xl sm:text-3xl">35%</strong>
-                <span className="text-xs text-muted-foreground">Performance gain</span>
+                <span className="text-xs text-muted-foreground">Product performance gain</span>
               </div>
             </div>
           </div>
@@ -333,7 +425,7 @@ function Index() {
             <div className="relative aspect-[4/5] overflow-hidden bg-muted">
               <img
                 src={portraitAsset.url}
-                alt="Deepak Porwal, freelance WordPress and full stack developer"
+                alt="Deepak Porwal, freelance WordPress developer"
                 className="h-full w-full scale-[.94] object-cover object-[50%_15%] saturate-[.8]"
               />
               <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-foreground/85 p-5 text-background backdrop-blur-sm">
@@ -357,9 +449,9 @@ function Index() {
           <div className="marquee-track flex w-max gap-8 whitespace-nowrap font-mono text-xs font-bold uppercase">
             {[0, 1].map((set) => (
               <span key={set}>
-                Business websites &nbsp; ✦ &nbsp; WooCommerce stores &nbsp; ✦ &nbsp; Website
-                redesigns &nbsp; ✦ &nbsp; Speed improvements &nbsp; ✦ &nbsp; Ongoing support &nbsp;
-                ✦ &nbsp;
+                Business websites &nbsp; ✦ &nbsp; Website redesigns &nbsp; ✦ &nbsp; Elementor
+                development &nbsp; ✦ &nbsp; WooCommerce stores &nbsp; ✦ &nbsp; Speed improvements
+                &nbsp; ✦ &nbsp; Maintenance &nbsp; ✦ &nbsp;
               </span>
             ))}
           </div>
@@ -372,12 +464,11 @@ function Index() {
             <div>
               <p className="section-kicker text-accent">01 / Services</p>
               <h2 className="mt-4 max-w-3xl font-display text-5xl font-bold sm:text-6xl">
-                Choose the help your website needs.
+                WordPress services for your business.
               </h2>
             </div>
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground md:text-right">
-              From a first launch to a focused improvement, every engagement starts with your
-              business goal.
+              Clear services, honest scope. Every engagement starts with your business goal.
             </p>
           </div>
           <div className="mt-12 grid border-l border-t border-border md:grid-cols-2">
@@ -405,11 +496,49 @@ function Index() {
         </div>
       </section>
 
+      <section id="problems" className="border-y border-border bg-muted/40 py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="grid gap-5 md:grid-cols-[1fr_auto] md:items-end">
+            <div>
+              <p className="section-kicker text-accent">02 / Website problems</p>
+              <h2 className="mt-4 max-w-3xl font-display text-5xl font-bold sm:text-6xl">
+                Is your website holding your business back?
+              </h2>
+            </div>
+            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground md:text-right">
+              Many business websites I review share some of these issues. Here are examples of
+              problems I can help identify and improve — respectfully, with evidence.
+            </p>
+          </div>
+          <ul className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {problems.map((problem) => (
+              <li
+                key={problem}
+                className="flex items-start gap-3 border border-border bg-background p-5 text-[15px] font-semibold leading-snug"
+              >
+                <Wrench className="mt-0.5 size-5 shrink-0 text-accent" />
+                {problem}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-10">
+            <a
+              href={reviewHref}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-3 bg-primary px-6 py-4 font-bold text-primary-foreground transition-transform hover:-translate-y-1"
+            >
+              Review My Website <Search className="size-5" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section id="work" className="bg-foreground py-20 text-background md:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <div className="mb-12 grid gap-5 md:grid-cols-[1fr_auto] md:items-end">
             <div>
-              <p className="section-kicker text-highlight">02 / Selected work</p>
+              <p className="section-kicker text-highlight">03 / Selected WordPress work</p>
               <h2 className="mt-4 font-display text-5xl font-bold sm:text-6xl">
                 Real websites.
                 <br />
@@ -417,15 +546,15 @@ function Index() {
               </h2>
             </div>
             <p className="max-w-sm text-sm leading-relaxed text-background/60 md:text-right">
-              Explore recent business, infrastructure, and e-commerce work delivered for live
-              brands.
+              Live business websites and production projects I have contributed to through my
+              professional experience.
             </p>
           </div>
           <div className="grid gap-px bg-background/20 md:grid-cols-2">
             {projects.map((project) => (
               <article
                 key={project.name}
-                className="group flex min-h-[500px] flex-col overflow-hidden bg-foreground"
+                className="group flex flex-col overflow-hidden bg-foreground"
               >
                 <a
                   href={project.href}
@@ -434,20 +563,12 @@ function Index() {
                   className="relative block aspect-[16/9] overflow-hidden bg-background/10"
                   aria-label={`Visit ${project.name} website`}
                 >
-                  {project.image ? (
-                    <img
-                      src={project.image}
-                      alt={project.imageAlt}
-                      className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.03]"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="portfolio-grid grid h-full place-items-center">
-                      <span className="font-display text-5xl font-bold text-background/25">
-                        {project.name}
-                      </span>
-                    </div>
-                  )}
+                  <img
+                    src={project.image}
+                    alt={project.imageAlt}
+                    className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.03]"
+                    loading="lazy"
+                  />
                   <span className="absolute right-4 top-4 grid size-11 place-items-center bg-background text-foreground">
                     <ExternalLink className="size-5" />
                   </span>
@@ -458,16 +579,32 @@ function Index() {
                     <span>{project.type}</span>
                   </div>
                   <h3 className="mt-8 font-display text-4xl font-bold">{project.name}</h3>
+                  <dl className="mt-5 grid gap-1.5 text-sm">
+                    <div className="flex gap-2">
+                      <dt className="shrink-0 font-bold text-background/45">Platform:</dt>
+                      <dd>{project.platform}</dd>
+                    </div>
+                    <div className="flex gap-2">
+                      <dt className="shrink-0 font-bold text-background/45">Role:</dt>
+                      <dd>{project.role}</dd>
+                    </div>
+                  </dl>
                   <p className="mt-4 max-w-lg leading-relaxed text-background/60">
-                    {project.description}
+                    <strong className="text-background/80">My contribution: </strong>
+                    {project.contribution}
+                  </p>
+                  <p className="mt-3 text-sm text-background/50">
+                    <strong className="text-background/70">Focus: </strong>
+                    {project.focus.join(" · ")}
                   </p>
                   <a
                     href={project.href}
                     target="_blank"
                     rel="noreferrer"
                     className="mt-auto flex items-center justify-between border-t border-background/20 pt-6 font-bold text-highlight"
+                    aria-label={`View live ${project.name} website`}
                   >
-                    Visit website <ArrowUpRight className="size-5" />
+                    View Live Website <ArrowUpRight className="size-5" />
                   </a>
                 </div>
               </article>
@@ -476,69 +613,18 @@ function Index() {
         </div>
       </section>
 
-      <section id="process" className="bg-secondary py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <p className="section-kicker text-accent">03 / How we work</p>
-          <div className="mt-5 grid gap-10 lg:grid-cols-[.75fr_1.25fr]">
-            <div>
-              <h2 className="font-display text-5xl font-bold sm:text-6xl">
-                Clear from first call to handover.
-              </h2>
-              <p className="mt-6 max-w-md leading-relaxed text-muted-foreground">
-                You know what is being built, when feedback is needed, and what happens after
-                launch.
-              </p>
-            </div>
-            <div className="grid border-l border-t border-foreground/20 sm:grid-cols-2">
-              {[
-                {
-                  step: "01",
-                  title: "Discover",
-                  copy: "Clarify your audience, goals, pages, content, timeline, and the action visitors should take.",
-                },
-                {
-                  step: "02",
-                  title: "Plan",
-                  copy: "Agree on structure, scope, and review stages so the work starts with shared expectations.",
-                },
-                {
-                  step: "03",
-                  title: "Build & review",
-                  copy: "Create the responsive website, share progress, and incorporate feedback at agreed points.",
-                },
-                {
-                  step: "04",
-                  title: "Test & hand over",
-                  copy: "Check key screens, forms, links, and performance before launch, then provide a practical handover.",
-                },
-              ].map((item) => (
-                <article
-                  key={item.step}
-                  className="border-b border-r border-foreground/20 p-6 sm:p-8"
-                >
-                  <span className="font-mono text-xs font-bold text-accent">
-                    STEP / {item.step}
-                  </span>
-                  <h3 className="mt-10 font-display text-3xl font-bold">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.copy}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section id="experience" className="py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <p className="section-kicker text-accent">04 / Experience</p>
+          <p className="section-kicker text-accent">04 / Professional experience</p>
           <div className="mt-5 grid gap-10 lg:grid-cols-[.65fr_1.35fr]">
             <div>
               <h2 className="font-display text-5xl font-bold sm:text-6xl">
-                Production experience, not just concepts.
+                Experience behind the services.
               </h2>
               <p className="mt-6 max-w-sm leading-relaxed text-muted-foreground">
-                Experience across client websites, product teams, e-commerce, and systems used by
-                real people.
+                I have professional development experience, and I now take WordPress website
+                projects directly. Employment work and freelance services are separate — the
+                projects above were contributed through the roles below.
               </p>
             </div>
             <div className="border-t border-foreground">
@@ -576,7 +662,7 @@ function Index() {
                 {
                   icon: Search,
                   title: "Business-first thinking",
-                  copy: "I start with the audience, offer, and enquiry goal—not a template or a list of plugins.",
+                  copy: "I start with the audience, offer, and enquiry goal — not a template or a list of plugins.",
                 },
                 {
                   icon: MessageCircle,
@@ -606,20 +692,51 @@ function Index() {
             <div className="border-b border-r border-accent-foreground/25 p-6">
               <strong className="font-display text-4xl">500+</strong>
               <p className="mt-2 text-sm text-accent-foreground/65">
-                Users supported through a production dashboard
+                Product users supported through a production dashboard (Powerplay role)
               </p>
             </div>
             <div className="border-b border-r border-accent-foreground/25 p-6">
               <strong className="font-display text-4xl">35%</strong>
               <p className="mt-2 text-sm text-accent-foreground/65">
-                Performance improvement in prior product work
+                Performance improvement in that product dashboard work
               </p>
             </div>
             <div className="border-b border-r border-accent-foreground/25 p-6">
               <strong className="font-display text-4xl">1,000+</strong>
               <p className="mt-2 text-sm text-accent-foreground/65">
-                Monthly interactions handled by an AI assistant
+                Monthly patient interactions handled by an internship chatbot project
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="process" className="py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <p className="section-kicker text-accent">06 / How we work</p>
+          <div className="mt-5 grid gap-10 lg:grid-cols-[.75fr_1.25fr]">
+            <div>
+              <h2 className="font-display text-5xl font-bold sm:text-6xl">
+                Clear from first call to handover.
+              </h2>
+              <p className="mt-6 max-w-md leading-relaxed text-muted-foreground">
+                You know what is being built, when feedback is needed, and what happens after
+                launch.
+              </p>
+            </div>
+            <div className="grid border-l border-t border-foreground/20 sm:grid-cols-2">
+              {processSteps.map((item) => (
+                <article
+                  key={item.step}
+                  className="border-b border-r border-foreground/20 p-6 sm:p-8"
+                >
+                  <span className="font-mono text-xs font-bold text-accent">
+                    STEP / {item.step}
+                  </span>
+                  <h3 className="mt-10 font-display text-3xl font-bold">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.copy}</p>
+                </article>
+              ))}
             </div>
           </div>
         </div>
@@ -628,41 +745,73 @@ function Index() {
       <section className="bg-foreground py-20 text-background md:py-28">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:px-10">
           <div>
-            <p className="section-kicker text-highlight">06 / Toolkit</p>
+            <p className="section-kicker text-highlight">07 / Technical skills</p>
             <h2 className="mt-5 font-display text-5xl font-bold leading-[.95] sm:text-6xl">
-              The right tools, used with purpose.
+              WordPress first, full-stack behind it.
             </h2>
             <p className="mt-7 max-w-md leading-relaxed text-background/65">
-              The technology follows the project. The priority stays the same: a fast, maintainable
-              website that supports your business.
+              The technology follows the project. Broader development experience supports custom
+              needs when WordPress alone is not enough.
             </p>
           </div>
           <div className="grid content-start gap-8">
             <div>
               <p className="font-mono text-xs uppercase text-background/45">WordPress delivery</p>
               <p className="mt-3 text-xl font-bold leading-relaxed">
-                WordPress · WooCommerce · Elementor Pro · WPForms · SEO tooling · Performance
-                caching · Security · Analytics
+                WordPress · WooCommerce · Elementor · WPForms · SEO tooling · Performance caching ·
+                Security · Analytics
               </p>
             </div>
             <div className="border-t border-background/20 pt-7">
-              <p className="font-mono text-xs uppercase text-background/45">Custom development</p>
+              <p className="font-mono text-xs uppercase text-background/45">
+                Supporting development
+              </p>
               <p className="mt-3 text-xl font-bold leading-relaxed">
-                React.js · JavaScript · Node.js · Express · MongoDB · Tailwind CSS · REST APIs ·
-                Python
+                HTML · CSS · JavaScript · React.js · Node.js · Express · MongoDB · MySQL · REST APIs
+                · Python · Java (familiar) · Git/GitHub · Tailwind CSS
               </p>
             </div>
             <p className="border-t border-background/20 pt-6 text-sm leading-relaxed text-background/50">
-              Tools are selected for the project’s needs, performance goals, and long-term
-              maintenance—not added for their own sake.
+              Tools are selected for the project's needs, performance goals, and long-term
+              maintenance — not added for their own sake.
             </p>
           </div>
         </div>
       </section>
 
-      <section id="faq" className="py-20 md:py-28">
+      <section id="review" className="py-20 md:py-28">
+        <div className="mx-auto max-w-5xl px-5 text-center sm:px-8 lg:px-10">
+          <p className="section-kicker text-accent">08 / Website review</p>
+          <h2 className="mt-5 font-display text-5xl font-bold sm:text-6xl">
+            Not sure what your website needs?
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl leading-relaxed text-muted-foreground">
+            I can review your existing website and point out practical opportunities around design,
+            mobile experience, performance, navigation, content, SEO and customer enquiry flow. You
+            receive the observations — no obligation.
+          </p>
+          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+            <a
+              href={reviewHref}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-3 bg-primary px-7 py-4 font-bold text-primary-foreground transition-transform hover:-translate-y-1"
+            >
+              Request a Website Review <Search className="size-5" />
+            </a>
+            <a
+              href="#problems"
+              className="inline-flex items-center justify-center gap-3 border border-foreground px-7 py-4 font-bold transition-colors hover:bg-foreground hover:text-background"
+            >
+              See Common Problems
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="border-t border-border py-20 md:py-28">
         <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-10">
-          <p className="section-kicker text-accent">07 / Client FAQ</p>
+          <p className="section-kicker text-accent">09 / Client FAQ</p>
           <h2 className="mt-5 font-display text-5xl font-bold sm:text-6xl">Before we start.</h2>
           <div className="mt-12 border-t border-foreground">
             {faq.map((item, index) => (
@@ -683,30 +832,32 @@ function Index() {
         </div>
       </section>
 
-      <section className="bg-highlight py-20 text-highlight-foreground md:py-28">
+      <section id="contact" className="bg-highlight py-20 text-highlight-foreground md:py-28">
         <div className="mx-auto max-w-7xl px-5 text-center sm:px-8 lg:px-10">
           <p className="font-mono text-xs font-bold uppercase">Have a website project in mind?</p>
           <h2 className="mx-auto mt-5 max-w-4xl font-display text-5xl font-bold leading-[.95] sm:text-7xl">
-            Tell me what you need. I’ll help you find the right next step.
+            Let us discuss your website.
           </h2>
           <p className="mx-auto mt-6 max-w-2xl leading-relaxed text-highlight-foreground/70">
-            Share your project type, goals, preferred timeline, and budget range. I’ll reply with
-            the most useful way forward.
+            Share your business, goals, preferred timeline, and budget range. The fastest way is
+            WhatsApp — I usually reply within hours.
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <a
-              href={whatsappHref}
+              href={discussHref}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center gap-3 bg-primary px-7 py-4 font-bold text-primary-foreground transition-transform hover:-translate-y-1"
             >
-              Message on WhatsApp <MessageCircle className="size-5" />
+              Discuss Your Website <MessageCircle className="size-5" />
             </a>
             <a
-              href={emailHref}
+              href={quoteHref}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center justify-center gap-3 border border-highlight-foreground px-7 py-4 font-bold transition-colors hover:bg-highlight-foreground hover:text-highlight"
             >
-              Send project details <Mail className="size-5" />
+              Get a Quote <Mail className="size-5" />
             </a>
           </div>
         </div>
@@ -717,15 +868,15 @@ function Index() {
           <div>
             <LogoMark />
             <p className="mt-4 max-w-md text-sm leading-relaxed text-primary-foreground/55">
-              Professional WordPress websites, online stores, redesigns, performance improvements,
-              and ongoing support.
+              Freelance WordPress developer for clinics, consultants, stores, restaurants and local
+              businesses — build, redesign, speed and maintenance.
             </p>
           </div>
           <div className="grid gap-3 text-sm font-semibold sm:grid-cols-2">
             <a className="footer-link" href={emailHref}>
               <Mail className="size-4" /> Email
             </a>
-            <a className="footer-link" href={whatsappHref} target="_blank" rel="noreferrer">
+            <a className="footer-link" href={discussHref} target="_blank" rel="noreferrer">
               <MessageCircle className="size-4" /> WhatsApp
             </a>
             <a className="footer-link" href="tel:+917374953088">
@@ -746,6 +897,16 @@ function Index() {
           <span>Bengaluru, India · Available for remote projects</span>
         </div>
       </footer>
+
+      <a
+        href={discussHref}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Chat on WhatsApp"
+        className="fixed bottom-5 right-5 z-50 grid size-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-sharp transition-transform hover:-translate-y-1"
+      >
+        <MessageCircle className="size-6" />
+      </a>
     </main>
   );
 }

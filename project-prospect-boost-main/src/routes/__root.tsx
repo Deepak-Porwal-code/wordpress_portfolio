@@ -73,18 +73,32 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Deepak Porwal — Developer" },
-      { name: "description", content: "WordPress and full stack development by Deepak Porwal." },
+      { title: "Deepak Porwal — Freelance WordPress Developer" },
+      {
+        name: "description",
+        content:
+          "Freelance WordPress developer in India. Business websites, redesigns, WooCommerce stores, speed and maintenance for clinics, consultants, stores and more.",
+      },
       { name: "author", content: "Deepak Porwal" },
-      { property: "og:title", content: "Deepak Porwal — Developer" },
+      { property: "og:title", content: "Deepak Porwal — Freelance WordPress Developer" },
       {
         property: "og:description",
-        content: "WordPress and full stack development by Deepak Porwal.",
+        content:
+          "WordPress websites for businesses: build, redesign, WooCommerce, speed and maintenance. Real work, clear process, easy contact.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://deepak-porwal-code.github.io/wordpress_portfolio/" },
+      {
+        property: "og:image",
+        content: "https://deepak-porwal-code.github.io/wordpress_portfolio/images/advo-preview.jpg",
+      },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      {
+        rel: "canonical",
+        href: "https://deepak-porwal-code.github.io/wordpress_portfolio/",
+      },
       {
         rel: "stylesheet",
         href: appCss,
